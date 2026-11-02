@@ -1,0 +1,159 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+
+	<!-- meta data used for SEO -->
+	<meta name = "decription" content="This is a template page for Pedal Cymru - copy it to make a new page">
+	<meta name = "keywords" content="add keywords for the specific page here">
+	
+	<!-- link to external style sheet used by all the pages -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	
+	
+	<!-- text that appears in the browser tab -->
+	<title>Pedal Cymru</title> 
+</head> 
+
+<!-- main body of the page: this is the content that appears on the page -->
+<body> 
+
+	<!-- header: Contains the pages main heading -->
+    <header role="banner"> 
+		<h1>Get Involved With Pedal Cymru</h1> 
+	</header> 
+	
+	<!-- navigation bar: links to each page in the website -->
+	<nav role="navigation" aria-label="Main Navigation"> 
+	
+		<!-- navigation links are items in an unordered list -->
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="safety.html">Cycle Safety</a></li>
+			<li><a href="contact.html" class="active">Get Involved</a></li>
+		</ul>
+	</nav> 
+    
+	<!-- main content here -->
+    <main role="main"> 
+		<h2>Join Local Led Rides, Volunteer, and Connect With Us</h2>
+		<p>
+			Active travel is most powerful when experienced together! Pedal Cymru supports 
+			a growing network of volunteer-led social cycling groups across Wales, welcoming 
+			riders of all ability levels—from total beginners returning to the saddle to 
+			seasoned commuters.
+		</p>
+
+		<h3>Community Led Rides and Events</h3>
+		<p>
+			Our free, guided social rides take place weekly across South, Mid, and North Wales. 
+			Led by qualified ride leaders, these groups follow quiet traffic-free routes and 
+			scenic paths, helping you build road confidence in a supportive, friendly environment.
+		</p>
+
+		<h3>Volunteer as a Cycle Champion</h3>
+		<p>
+			Do you love cycling and want to help others in your local area? Become a Pedal Cymru 
+			Cycle Champion! We provide free training in route planning, basic bike maintenance, 
+			and ride leadership for enthusiastic volunteers.
+		</p>
+		
+		<img src="images/group_on_bikes.jpg" alt="a diverse group of people out in the countryside on a community bike ride">
+		<figcaption>AI generated using Gemini</figcaption>
+		
+		<iframe src="https://www.youtube.com/embed/86sUE9cwiG8?si=UX_kjmVzDj6vD_8p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	
+		
+    </main> 
+    
+	<!-- Extra content is included here -->
+	<aside aria-label="Contact information">
+		<h3>Stay Connected</h3>
+		<p>
+			Sign up for our monthly active travel newsletter to receive local ride schedules, 
+			route guides, and cycling tips straight to your inbox.
+		</p>
+		<!-- sign-up form -->
+		<form action="https://httpbin.org/post" method="post" onsubmit="return validateForm()">
+			<label for="email">Enter your email:</label>
+			<input id="email" name="email"  placeholder="name@example.com">
+			<p id="email-error-msg" class="error-msg"></p>
+			
+			<label for="location">Select your nearest region:</label> 
+			<select id="location" name="location"> 
+            	<!-- Options added dynamically by JavaScript --> 
+        	</select> 
+			
+			<button type="submit" >Sign Up</button>
+			
+			
+		</form>
+		
+		<p><strong>Contact Info:</strong></p>
+		<p>
+			Email: info@pedalcymru.wales<br>
+			Phone: 029 2087 4000<br>
+			Location: Active Travel Hub, Cardiff, CF10 1EP
+		</p>
+    </aside>
+	
+	<!--page footer -->
+    <footer role="contentinfo"> 
+        <p>&copy; 2027 <a href="https:\\www.wjec.co.uk">WJEC</a></p> 
+    </footer> 
+	
+	<!-- embedded javascrip functions for the form -->
+	<script>
+
+		const locations = ["Cardiff", "Swansea", "Gwynedd", "Powys", "Pembrokeshire"];
+		const selectMenu = document.getElementById('location');
+		for (let i = 0; i < locations.length; i++) {
+			let option = document.createElement('option');
+			option.value = locations[i].toLowerCase();
+			option.textContent = locations[i];
+			selectMenu.appendChild(option); 
+		} 
+		
+		
+
+		/* this form returns true if the inputs are valid and false if they are not */
+		/* the form is not submitted if this function returns false */
+		function validateForm()
+		{
+			const emailInputStr = document.getElementById("email").value;
+			const errorMessage = document.getElementById("email-error-msg");
+			
+			//alert("in validateForm()");
+
+			/* if the email is empty then include an error message and return false so the form does not submit*/
+			if(emailInputStr=="") {
+				errorMessage.textContent="Email needed.  Please enter a valid email";
+				
+				//alert("No email provided - return false")
+				return false;
+			}
+
+
+			/* if the email provided does not contain a '@' character the include an error message and return false so the form does not submit*/
+			if(!emailInputStr.includes("@")) {
+				
+				errorMessage.textContent="Please enter a valid email address containing a '@'";
+				
+				//alert("invalid email provided - return false")
+				return false;
+			}
+			
+			
+			// form is valid so 
+			
+			// clear the error message
+			errorMessage.textContent="";
+			
+			// and return true so the form can be submitted
+			//alert("return true")
+			return true;
+			
+		}
+	
+	</script>
+</body> 
+</html> 

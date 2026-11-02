@@ -1,0 +1,285 @@
+/* style sheet for the PEDAL CYMRU site */
+
+/* Global resets */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* set default styling for fonts and the background colour */
+body {
+	background-color: #f2f7f4;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	color: #111827;
+	line-height: 1.6;
+	margin: 0 auto;
+	width: 90%;
+	
+	/* ========================= */
+	/* CSS for responsive layout */
+	/* ========================= */
+	
+	/* 1. Page width limits */
+	max-width: 1000px;
+	min-width: 320px;
+	
+	/* 2. Enable CSS Grid layout */
+	display: grid;
+	column-gap: 10px;							/* this is the gap between columns  */
+	
+	grid-template-columns: 1.5fr 4fr 2fr;		/* use a 3-column layout - left column  will be the side nav bar, middle is the main section and right is the aside*/
+												/* this may give a false error in DW - Unexpected token '2fr' */
+												/* don't worry - check the split or live view */
+}
+
+/* CSS for responsive layout - the header and footer spread across all columns to foem a row */
+header, 
+footer{
+	grid-column: 1 / -1;						/* spans from start of line to the end of a line  */
+}
+
+
+/* style the header and footer */
+header,
+footer {
+	background-color: #1b4332;
+	color: white;
+	padding: 20px 15px;
+	text-align: center;
+}
+
+/* style the nav bar */
+nav{
+	background-color: #2d6a4f; /* emerald background */
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+/* style the list of items inside the nav bar to remove the bullet points */
+nav ul {
+	/* original CSS  */
+	list-style-type: none;
+	
+	/* Added to make the menu responsive */
+	display:flex;							/* this will place the iterms in a column */
+	flex-direction: column;
+	justify-content: space-around;			/* this will space the items evenly across the nav bar */
+
+}
+
+
+
+/* style the links in the navigation items to look like buttons */
+nav a {
+	color: white;			/* text is white */
+	text-decoration: none;	/* no underline */
+	font-weight: bold;		/* bold text */
+	display: block;			/* click anywhere in the whole block, not just on the text, and can apply padding */
+	padding: 8px 12px;		/* apply padding to the above/below and left/right */
+}
+
+/* style the link to highlight the item the cursor is hovering over */
+nav a:hover {
+	background-color: #1b4332;	/* make the background a darker colour */
+	color: #74c69d;				/* make the text a light green */
+	border-radius: 4px;			/* round the corners */
+}
+
+/* highlight the current page item - need to set the link to class="active" in the html file */
+nav a.active {
+	color: orange;				/* current page will have orange text */
+}
+
+/* style the main content area and the sidebar - use the same styling */
+main, 
+aside {
+	background-color: white;
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	padding: 30px;
+	margin-bottom: 20px;
+}
+
+/* Give headings h2 and h3 a green colour */
+h2,
+h3 {
+	color: #1b4332;
+	margin-bottom: 10px;
+}
+
+h3 {
+	margin-top:16px;
+	margin-bottom:0px;
+}
+
+/* responsive image styling */
+img{
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-top:30px;
+}
+
+iframe{
+	width:100%;
+	aspect-ratio:16/9;
+	display: block;
+	margin:30px 0px;
+}
+
+/* add padding to the uls in the main and sidebar areas so the bullet points line up with the main text */
+main ul, 
+aside ul,
+main ol,
+aside ol{
+	padding: 20px;
+}
+
+/* style the figcaption text - gray, italic and smaller than the normal text */
+figcaption{
+	color: darkgray;		/* set text colour to a dark gray */
+	font-style: italic;		/* make the text italic */
+	font-size: 80%;			/* make the font size 80% of the default */
+	margin-top: -5px;		/* move the text 5px up closer to the image */
+}
+
+footer a, 
+footer a:visited {
+	color: #74c69d;			/* Mint green for unvisited links */
+}
+
+/* EXTENSION ----------------------------------------------------------------------------------------------- */
+
+/* create a button class - it can be applied to any <a> tags in the code to make the links look like buttons */
+.btn {
+	display: inline-block;			/* allows padding and margins to be set */
+	background-color: darkorange;	/* normal background color is dark orange */
+	color: #1b4332;					/* the text colour is the same as the header background */
+	font-weight: bold;				/* text is bold */
+	text-decoration: none;			/* no underline */
+	padding: 8px 16px;				/* add padding to increase the height and width of the button */
+	border-radius: 6px;				/* round the corners */
+	margin: 10px 0px;				/* add space above and below the button, but not on the sides */
+	
+	transition:0.3s;				/* how long to animate trasitions for */
+}
+
+.btn:hover {
+	/*background-color: orange;		*/				/* change the colour to a lighter orange when the cursor hovers over the button */
+	
+	transform:translateY(-2px); 					/* move to slightly up when we hover over it                   */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	border-bottom-width:6px;
+	
+}
+
+.btn:active {
+	transform:translateY(2px); /* move back to starting possition*/
+	box-shadow: none;
+	
+}
+
+
+/* CSS transitions and animations - needed for band 5 */
+
+/* steps to apply an animation/transition */
+/* Step 1 - define the keyframe animation and give it a name */
+/* Step 2 - apply the animation to a selector */
+
+/* define a slide fade down - opacity changes from 0 to 100 and element moves up and down slightly*/
+@keyframes slideDownFade{
+	0% {
+		opacity : 0;
+	}
+	
+	100%{
+		opacity: 1;
+	
+	}
+}
+
+
+/* apply this to animate the main header text - it will fade in and bump up and down over 0.8s */
+header h1{
+	animation: slideDownFade 2s ease-out;
+	
+}
+
+/* **************************************************************************
+   FLEXBOX AND GRID MOBILE navigation layout (750px breakpoint)
+   
+   These CSS rules are used When the screen width is less the 750px - instead of the rules given above.S
+
+   In this case the nav bar items will be displayed 1 above each other instead of next to each other 
+   in the same row.
+ * *************************************************************************  */
+@media(max-width:750px){
+	
+	/* FLEXBOX CSS rules applied to the navigation 								*/
+	/* stack navigation items vertically to take up less width on small screens */
+	nav ul {
+		flex-direction: column;
+	}
+	
+	nav a{
+		text-align:center;
+	}
+	
+	/* GRID CSS rules applied to the overall layout: 						    */
+	/* for small width screen switch to a single column.                        */
+	body{
+		grid-template-columns: 1fr;
+	}
+
+}
+
+
+
+/* style the form */
+aside form{
+	margin-top:10px;
+	margin-bottom:30px;
+}
+
+aside label{
+	display: block;
+	font-weight:bold;
+
+}
+
+aside input,
+aside select{
+	display: block;
+	width: 100%;
+	padding:8px;
+	margin-bottom: 10px;
+	border:1px solid #cbd5e1;
+	border-radius:4px;
+}
+
+aside button { 
+    padding: 8px 16px;
+	background-color: #1b4332;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer; 
+} 
+
+ 
+
+aside button:hover {
+	background-color: #2d6a4f; 
+} 
+
+/* Style for JavaScript error messages */ 
+
+.error-msg {
+	color: red;
+	font-size: small;
+	margin-top: 8px;
+	margin-bottom: 10px; 
+	font-style: italic;
+} 
+ 
