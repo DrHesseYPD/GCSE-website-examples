@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pedal Cymru - WJEC GCSE Digital Technology Unit 2 Task 4(a) Web Development Exemplar Hub (Band 1 to Band 5).">
+  <title>Pedal Cymru - WJEC GCSE Design Examples</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    body {
+      background-color: #f2f7f4;
+      color: #111827;
+      line-height: 1.6;
+      padding: 20px 10px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background-color: #1b4332;
+      color: #ffffff;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+    }
+
+    .site-header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .site-header p {
+      font-size: 1.1rem;
+      color: #74c69d;
+      font-weight: 500;
+    }
+
+    .intro-card {
+      background-color: #ffffff;
+      border-left: 5px solid #2d6a4f;
+      padding: 20px 25px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .intro-card h2 {
+      color: #1b4332;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .intro-card p {
+      color: #374151;
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      color: #1b4332;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #cbd5e1;
+      padding-bottom: 8px;
+    }
+
+    .grid-hub {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+
+    .band-card {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .band-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    .band-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+    }
+
+    .card-band1::before { background-color: #ef4444; }
+    .card-band2::before { background-color: #f97316; }
+    .card-band3::before { background-color: #eab308; }
+    .card-band4::before { background-color: #10b981; }
+    .card-band5::before { background-color: #2563eb; }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .card-header h3 {
+      font-size: 1.25rem;
+      color: #1b4332;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 12px;
+      color: #ffffff;
+    }
+
+    .badge-b1 { background-color: #ef4444; }
+    .badge-b2 { background-color: #f97316; }
+    .badge-b3 { background-color: #ca8a04; }
+    .badge-b4 { background-color: #10b981; }
+    .badge-b5 { background-color: #2563eb; }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      background-color: #f1f5f9;
+      color: #475569;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .pill-js {
+      background-color: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+
+    .pill-nojs {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border-color: #bae6fd;
+    }
+
+    .card-description {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 15px;
+    }
+
+    .feature-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #374151;
+      margin-bottom: 20px;
+    }
+
+    .feature-list li {
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .feature-list li::before {
+      content: "•";
+      color: #2d6a4f;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .btn-launch {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: #1b4332;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .btn-launch:hover, .btn-launch:focus {
+      background-color: #2d6a4f;
+      outline: 2px solid #d97706;
+    }
+
+    /* Comparison Table Section */
+    .table-section {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 35px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.88rem;
+    }
+
+    .comparison-table th, .comparison-table td {
+      padding: 10px 12px;
+      border: 1px solid #e2e8f0;
+      text-align: left;
+    }
+
+    .comparison-table th {
+      background-color: #1b4332;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background-color: #f8faf9;
+    }
+
+    .site-footer {
+      background-color: #111827;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    .site-footer a {
+      color: #74c69d;
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .grid-hub {
+        grid-template-columns: 1fr;
+      }
+      .comparison-table {
+        font-size: 0.78rem;
+      }
+      .comparison-table th, .comparison-table td {
+        padding: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header class="site-header" role="banner">
+      <h1>Pedal Cymru Design Examples</h1>
+      <p>WJEC GCSE Digital Technology — Unit 2 Task 3(a) Web Development Design Exemples</p>
+    </header>
+
+    <div class="intro-card" role="region" aria-label="Teacher Guidance Notice">
+      <h2>Website Layout Examples</h2>
+      <p>For <strong>task 3</strong> you need to provide <strong>2 initial designs</strong>.  These examples show two different layouts you could use for your designs.</p>
+    </div>
+
+    <div class="grid-hub">
+
+      <!-- BAND 1 CARD -->
+      <div class="band-card card-band1">
+        <div>
+          <div class="card-header">
+            <h3>Responsive horizontal navigation</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">2 columns</span>
+            <span class="pill">horozontal navigation</span>
+			<span class="pill">Responsive</span>
+          </div>
+          <ul class="feature-list">
+            <li>Header across page containing page title</li>
+            <li>Horozontal navigation bar across page</li>
+            <li>Content in 2 columns - main and side bar</li>
+            <li>Footer across the page at the bottom</li>
+            <li>At smaller widths sections stack vertically.</li>
+          </ul>
+        </div>
+        
+		<a href="top-nav-bar\index.html" class="btn-launch">Launch Horizontal Navigation Example &rarr;</a>
+      </div>
+
+      <!-- BAND 2 CARD -->
+      <div class="band-card card-band2">
+        <div>
+          <div class="card-header">
+            <h3>Responsive vertical navigation</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="pill">3 columns</span>
+            <span class="pill">Vertical navigation</span>
+			<span class="pill">Responsive</span>
+          </div>
+          <ul class="feature-list">
+            <li>Header across page containing page title</li>
+            <li>Vertical navigation in left column</li>
+            <li>Main content in middle column</li>
+            <li>Side bar in right column</li>
+            <li>Footer across the page at the bottom</li>
+            <li>At smaller widths sections stack vertically.</li>
+          </ul>
+        </div>
+        <a href="side-nav-bar\index.html" class="btn-launch">Launch Vertical Navigation Example &rarr;</a>
+      </div>
+
+    </div>
+
+  
+    <footer class="site-footer" role="contentinfo">
+      <p>&copy; 2027 Pedal Cymru Educational Exemplar Hub. Designed for WJEC GCSE Digital Technology Unit 2 NEA Assessment.</p>
+      <p><a href="https://www.wjec.co.uk" target="_blank" rel="noopener">Visit Official WJEC Qualifications Portal</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
