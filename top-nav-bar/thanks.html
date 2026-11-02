@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You - Pedal Cymru</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body style="grid-template-columns: 1fr">
+
+    <header role="banner"> 
+        <h1>Pedal Cymru</h1> 
+    </header>
+
+    <main role="main">
+        <h2>Thank You for Registering!</h2>
+        
+        <!-- Message populated by JavaScript -->
+        <p id="greetingMsg">Processing your signup...</p>
+        
+        <!-- Return link back to contact.html -->
+        <p><a href="contact.html" class="btn">Return to Get Involved</a></p>
+    </main>
+
+    <!-- Embedded JS to read GET parameters from URL -->
+    <script>
+        // Read URL search parameters
+        const params = new URLSearchParams(window.location.search);
+        const userEmail = params.get('email');
+        const userLocation = params.get('location');
+
+        const greeting = document.getElementById('greetingMsg');
+
+        // Display submitted data
+        if (userEmail) {
+            if (userLocation) {
+                greeting.textContent = 'Thank you for signing up with ' + userEmail + ' in ' + userLocation + '!';
+            } else {
+                greeting.textContent = 'Thank you for signing up with ' + userEmail + '!';
+            }
+        } else {
+            greeting.textContent = 'Thank you for getting involved with Pedal Cymru!';
+        }
+    </script>
+
+</body>
+</html>
